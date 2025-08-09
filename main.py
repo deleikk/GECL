@@ -58,7 +58,6 @@ print("Sparsity: ", np.where(adata.X == 0)[0].shape[0] / (adata.X.shape[0] * ada
 # print(adata)
 # ########################################
 
-
 #################预处理#######################
 
 # Basic filtering
@@ -90,46 +89,13 @@ print( 'lr',args.lr, 'lambda_1:', args.lambda1, 'lambda_2:', args.lambda2,
 #################run#######################
 adata ,record = run_GECL(adata,cl_type='cl_type',n_clusters=n_clusters,return_all=True)
 
-
-print( 'lr:',args.lr, 'lambda_1:', args.lambda1, 'lambda_2:', args.lambda2,
-      'lambda_3:', args.lambda3, 'd:', args.d,  'batch_size:', args.inter_batch,'HVG',args.hvg_top ,'svq_q:',args.q)
-
-# Use cell embedding `feat` to perfrom Umap
-
-#
-# # 创建映射字典
-# label_map = {
-#     0: 'delta',
-#     1: 'alpha',
-#     2: 'activated_stellate',
-#     3: 'ductal',
-#     4: 'beta',
-#     5: 'macrophage',
-#     6: 'quiescent_stellate',
-#     7: 'gamma',
-#     8: 'endothelial',
-#     9: 'epsilon',
-#     10: 'schwann',
-#     11: 'mast',
-#     12: 'acinar',
-#     13: 't_cell'
-# }
-#
-# # 替换标签值
-# adata.obs['cl_type'] = adata.obs['cl_type'].map(label_map)
-#
-# # 检查是否替换成功
-# print(adata.obs['cl_type'].unique())
-# adata.obs['cl_type'] = adata.obs['cl_type'].astype('category')
-
-
-
 # sc.tl.umap(adata)
 # adata.obs['cl_type'] = adata.obs['cl_type'].astype(str).astype('category')
 # adata.obs['kmeans'] = adata.obs['kmeans'].astype(str).astype('category')
-# adata.obs['louvain'] = adata.obs['louvain'].astype(str).astype('category')  ##是否可以改为用最好的那一轮去做可视化？
+# adata.obs['louvain'] = adata.obs['louvain'].astype(str).astype('category')  
 # sc.pl.umap(adata, color=['louvain', 'cl_type','kmeans'])
 # sc.pl.umap(adata, color=['louvain'])
 # sc.pl.umap(adata, color=[ 'cl_type'])
 # sc.pl.umap(adata, color=['kmeans'])
+
 
